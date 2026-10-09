@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShopApp.Views.MainPage">
+
+    <VerticalStackLayout Padding="20" Spacing="5" HorizontalOptions="Center">
+
+        <Border StrokeThickness="1" Stroke="Black" Padding="15,8" HorizontalOptions="Center">
+            <Label Text="Categoría:" FontAttributes="Bold" FontSize="22" TextColor="#00008B" HorizontalOptions="Center"/>
+        </Border>
+        <Label x:Name="category" FontAttributes="Bold" FontSize="20" TextColor="#8A2BE2" HorizontalOptions="Center" Margin="0,0,0,15"/>
+
+        <Border StrokeThickness="1" Stroke="Black" Padding="15,8" HorizontalOptions="Center">
+            <Label Text="Cliente:" FontAttributes="Bold" FontSize="22" TextColor="#00008B" HorizontalOptions="Center"/>
+        </Border>
+        <Label x:Name="client" FontAttributes="Bold" FontSize="20" TextColor="#8A2BE2" HorizontalOptions="Center" Margin="0,0,0,15"/>
+
+        <Border StrokeThickness="1" Stroke="Black" Padding="15,8" HorizontalOptions="Center">
+            <Label Text="Producto:" FontAttributes="Bold" FontSize="22" TextColor="#00008B" HorizontalOptions="Center"/>
+        </Border>
+        <Label x:Name="product" FontAttributes="Bold" FontSize="20" TextColor="#8A2BE2" HorizontalOptions="Center"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
