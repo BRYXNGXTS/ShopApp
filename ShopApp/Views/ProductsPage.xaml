@@ -4,13 +4,13 @@
              x:Class="ShopApp.Views.ProductsPage"
              xmlns:handlers="clr-namespace:ShopApp.Handlers"
              Title="ProductsPage">
-    
+
     <Shell.SearchHandler>
         <handlers:ProductoBusquedaHandler
             Placeholder="Buscar producto"
             DisplayMemberName="Nombre"
             ShowsResults="True"
-            />
+            ItemTemplate="{StaticResource ProductDataTemplate}" />
     </Shell.SearchHandler>
 
     <VerticalStackLayout x:Name="container">
