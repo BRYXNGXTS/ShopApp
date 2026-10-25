@@ -9,38 +9,55 @@
         <views:HelpSupportDetailData />
     </ContentPage.BindingContext>
 
-    <Grid ColumnDefinitions="*,*">
-        <!-- Columna 0: Lista con CollectionView y Stepper -->
-        <VerticalStackLayout>
-            <CollectionView ItemsSource="{Binding Products}"
-                            SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}"
-                            ItemTemplate="{StaticResource ProductDataTemplate}"
-                            HeightRequest="300"
-                            SelectionMode="Single" />
+    <!-- Se agregan las RowDefinitions para dividir la pantalla en 3 secciones -->
+    <Grid RowDefinitions="*,Auto,*">
 
-            <HorizontalStackLayout VerticalOptions="Center">
-                <Stepper Minimum="1"
-                         Maximum="100"
-                         Increment="1"
-                         x:Name="cantidad"
-                         Value="{Binding Cantidad, Mode=TwoWay}" />
-                <Label VerticalOptions="Center"
-                       Margin="4"
-                       Text="{Binding Value, Source={x:Reference Name=cantidad}}" />
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+        <!-- Fila 0: Tu diseño original intacto -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,*">
+            <!-- Columna 0: Lista con CollectionView y Stepper -->
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Products}"
+                                SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}"
+                                ItemTemplate="{StaticResource ProductDataTemplate}"
+                                HeightRequest="300"
+                                SelectionMode="Single" />
 
-        <!-- Columna 1: Información detallada -->
-        <VerticalStackLayout Grid.Column="1">
-            <Label Text="Nombre" />
-            <Label Text="{Binding ProductoSeleccionado.Nombre}" />
+                <HorizontalStackLayout VerticalOptions="Center">
+                    <Stepper Minimum="1"
+                             Maximum="100"
+                             Increment="1"
+                             x:Name="cantidad"
+                             Value="{Binding Cantidad, Mode=TwoWay}" />
+                    <Label VerticalOptions="Center"
+                           Margin="4"
+                           Text="{Binding Value, Source={x:Reference Name=cantidad}}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
 
-            <Label Text="Descripcion" />
-            <Label Text="{Binding ProductoSeleccionado.Descripcion}" />
+            <!-- Columna 1: Información detallada -->
+            <VerticalStackLayout Grid.Column="1">
+                <Label Text="Nombre" />
+                <Label Text="{Binding ProductoSeleccionado.Nombre}" />
 
-            <Label Text="Precio" />
-            <Label Text="{Binding ProductoSeleccionado.Precio, StringFormat='{0:C}'}" />
-        </VerticalStackLayout>
+                <Label Text="Descripcion" />
+                <Label Text="{Binding ProductoSeleccionado.Descripcion}" />
+
+                <Label Text="Precio" />
+                <Label Text="{Binding ProductoSeleccionado.Precio, StringFormat='{0:C}'}" />
+            </VerticalStackLayout>
+        </Grid>
+
+        <!-- Fila 1: Botón de Agregar enlazado al Command -->
+        <Button Grid.Row="1" Text="Agregar" Command="{Binding AddCommand}" Margin="10,0" />
+
+        <!-- Fila 2: Colección que muestra el registro de compras -->
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Compras}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding .}" Margin="10,2" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </Grid>
-
 </ContentPage>

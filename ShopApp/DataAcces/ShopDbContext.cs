@@ -10,6 +10,7 @@ namespace ShopApp.DataAcces
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Client> Clients { get; set; }
+        public DbSet<Compra> Compras { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,4 +54,10 @@ namespace ShopApp.DataAcces
     }
 
     public record Client(int Id, string Nombre, string Direccion);
+
+    // Aquí está la corrección: Agregamos la propiedad Id al final del record
+    public record Compra(int ClientId, int ProductId, int Cantidad)
+    {
+        public int Id { get; set; }
+    }
 }
