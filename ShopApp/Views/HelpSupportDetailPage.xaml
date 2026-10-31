@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:ShopApp.Views"
              x:Class="ShopApp.Views.HelpSupportDetailPage"
              Title="HelpSupportDetailPage">
 
-    <ContentPage.BindingContext>
-        <views:HelpSupportDetailData />
-    </ContentPage.BindingContext>
-
-    <!-- Se agregan las RowDefinitions para dividir la pantalla en 3 secciones -->
     <Grid RowDefinitions="*,Auto,*">
 
-        <!-- Fila 0: Tu diseño original intacto -->
         <Grid Grid.Row="0" ColumnDefinitions="*,*">
-            <!-- Columna 0: Lista con CollectionView y Stepper -->
             <VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Products}"
                                 SelectedItem="{Binding ProductoSeleccionado, Mode=TwoWay}"
@@ -34,7 +26,6 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
-            <!-- Columna 1: Información detallada -->
             <VerticalStackLayout Grid.Column="1">
                 <Label Text="Nombre" />
                 <Label Text="{Binding ProductoSeleccionado.Nombre}" />
@@ -47,10 +38,8 @@
             </VerticalStackLayout>
         </Grid>
 
-        <!-- Fila 1: Botón de Agregar enlazado al Command -->
         <Button Grid.Row="1" Text="Agregar" Command="{Binding AddCommand}" Margin="10,0" />
 
-        <!-- Fila 2: Colección que muestra el registro de compras -->
         <CollectionView Grid.Row="2" ItemsSource="{Binding Compras}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
